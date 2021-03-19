@@ -54,7 +54,7 @@ public class Maze2178 {
         return array[n-1][m-1];
     }
     public static void main(String[] args) throws Exception{
-        Maze maze = new Maze();
+        Maze2178 maze = new Maze2178();
         Scanner scanner = new Scanner(System.in);
         int N = scanner.nextInt();
         int M = scanner.nextInt();
