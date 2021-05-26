@@ -26,6 +26,7 @@ class Network {
         for(int i=0; i<N; i++){
             if(n!=i && computers[n][i]==1 && visited[i]==false)
                 dfs(computers,i);
+            
         }
     }
 }
