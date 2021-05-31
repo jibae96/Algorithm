@@ -37,8 +37,9 @@ class DiskController {
             }
             if(!queue.isEmpty()){
                 MyJob myJob = queue.poll();
+                answer += current-myJob.requestTime;
+                answer += myJob.spendTime;
                 current += myJob.spendTime;
-                answer += (current - myJob.requestTime);
                 count++;
             }else{
                 current++;
