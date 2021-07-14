@@ -1,5 +1,54 @@
-import java.util.*;
+public class Covid {
+    int [] goX = {-1,0,1,0};
+    int [] goY = {0,1,0,-1};
+    boolean [][] visited;
+    int [] answer;
+    public int[] solution(String[][] places){
+        answer = new int [places.length];
+        for(int i=0; i<answer.length; i++)
+            answer[i] = 1;
+            
+        for(int i=0; i<places.length; i++){
+            visited = new boolean[5][5];
+            for(int j=0; j<5; j++){
+                for(int k=0; k<5; k++){
+                    if(places[i][j].charAt(k)=='P'){
+                        visited[j][k] = true;
+                        dfs(i, j, k, 0, places[i]);
+                        visited[j][k] = false;
+                    }
+                }
+            }
+        }
+        return answer;
+    }
 
+    public void dfs(int num, int x, int y, int count, String[] places){
+        if(count>2) return;
+        // 거리가 2 이하인 곳에 다른 응시자가 있는 경우
+        if(count>0 && count<=2 && places[x].charAt(y)=='P'){
+            answer[num] = 0;
+            return;
+        }
+
+        for(int i=0; i<4; i++){
+            int tempX = x + goX[i];
+            int tempY = y + goY[i];
+
+            if(tempX>=0 && tempX<5 && tempY>=0 && tempY<5){
+                if(places[tempX].charAt(tempY)!='X'){
+                    if(visited[tempX][tempY]) continue;
+                    visited[tempX][tempY] = true;
+                    dfs(num, tempX, tempY, count+1, places);
+                    visited[tempX][tempY] = false;
+                }
+            }
+        }
+    }
+}
+
+
+/*
 class Covid {
     int [] goX = {-1,0,1,0};
     int [] goY = {0,1,0,-1};
@@ -94,3 +143,4 @@ class Covid {
         return 1;
     }
 }
+*/
