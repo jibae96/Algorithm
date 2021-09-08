@@ -111,9 +111,5 @@ class MatchingScore {
 
         ms.solution(word, pages);
 
-
-
-        String str = "hello <a href=\"https://b.com\"> Link to b </a>\n</body>\n</html>";
-        System.out.println(str.indexOf("<a href=\"",6));
     }
 }
